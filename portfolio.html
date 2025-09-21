@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaspa Manikanta Sai - Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-attachment: fixed;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Floating particles background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Glassmorphism styles */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-dark {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Header styles */
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      padding: 15px 30px;
+      width: 95%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #fff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover:before {
+      left: 100%;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Main content */
+    main {
+      margin-top: 100px;
+      padding: 0 20px;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      background: linear-gradient(45deg, #fff, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #a78bfa, #06b6d4);
+      border-radius: 2px;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 100px 40px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #fff, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .tagline {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* About section */
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .profile-image {
+      position: relative;
+      text-align: center;
+    }
+
+    .profile-image img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .profile-image:hover img {
+      transform: scale(1.05);
+      border-color: #a78bfa;
+    }
+
+    .hero-image {
+      margin-bottom: 30px;
+    }
+
+    .hero-image img {
+      width: 200px;
+      height: 200px;
+      border: 4px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.1);
+      border-color: #a78bfa;
+      box-shadow: 0 20px 60px rgba(167, 139, 250, 0.3);
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    /* Skills section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .skill-card {
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .timeline-content p {
+      
+    }
+
+    .skill-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* Projects section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #a78bfa;
+    }
+
+    .project-card p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-links a {
+      color: #06b6d4;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .project-links a:hover {
+      color: #a78bfa;
+      transform: translateX(5px);
+    }
+
+    /* Experience & Education */
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #a78bfa, #06b6d4);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 80px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 21px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      background: #3b82f6;
+      border-radius: 50%;
+      border: 3px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .timeline-content {
+      padding: 25px;
+    }
+
+    .timeline-content h3 {
+      color: #60a5fa;
+      margin-bottom: 5px;
+    }
+
+    .timeline-content .company {
+      color: #3b82f6;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .timeline-content .date {
+      opacity: 0.7;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    /* Contact section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      padding: 25px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: #a78bfa;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      margin-top: 80px;
+      opacity: 0.7;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      header {
+        width: 90%;
+        padding: 15px 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero .tagline {
+        font-size: 1.1rem;
+      }
+
+      .about-container {
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Enhanced animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stagger-animation {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .stagger-animation.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Progress bar for scrolling */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(45deg, #a78bfa, #06b6d4);
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* Parallax effect for particles */
+    .parallax-slow {
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Floating elements */
+    .float-animation {
+      animation: floatUpDown 6s ease-in-out infinite;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% { 
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    /* Pulse animation for important elements */
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 40px rgba(167, 139, 250, 0.6);
+      }
+    }
+
+    /* Skill cards enhanced animation */
+    .skill-card {
+      padding: 25px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+      opacity: 0;
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+      animation: shimmer 1s ease-in-out;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: rotate(45deg) translateX(-100%);
+      }
+      100% {
+        transform: rotate(45deg) translateX(100%);
+      }
+    }
+
+    /* Timeline enhanced animations */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 80px;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-item:nth-child(even) {
+      transform: translateX(50px);
+    }
+
+    .timeline-item:nth-child(even).visible {
+      transform: translateX(0);
+    }
+
+    /* Project cards enhanced */
+    .project-card {
+      padding: 30px;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Text reveal animation */
+    .text-reveal {
+      overflow: hidden;
+    }
+
+    .text-reveal span {
+      display: inline-block;
+      transform: translateY(100%);
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .text-reveal.visible span {
+      transform: translateY(0);
+    }
+
+    /* Enhanced hero image animation */
+    .hero-image img {
+      width: 200px;
+      height: 200px;
+      border: 4px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.1) rotate(5deg);
+      border-color: #a78bfa;
+      box-shadow: 0 20px 60px rgba(167, 139, 250, 0.4);
+      filter: brightness(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <header class="glass">
+    <div class="logo">Kaspa Manikanta Sai</div>
+    <nav>
+      <a href="#hero"><i class="fas fa-home"></i> Home</a>
+      <a href="#about"><i class="fas fa-user"></i> About</a>
+      <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+      <a href="#projects"><i class="fas fa-folder"></i> Projects</a>
+      <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-content fade-in">
+        <div class="profile-image hero-image">
+          <img src="PhotoForPortfolio.jpeg" alt="Kaspa Manikanta Sai">
+        </div>
+        <h1 class="text-reveal"><span>Software Engineer</span></h1>
+        <p class="tagline slide-in-left">Crafting scalable backend solutions with modern microservices architecture</p>
+        <div class="cta-buttons scale-in">
+          <a href="#projects" class="btn btn-primary pulse-glow">
+            <i class="fas fa-rocket"></i> View My Work
+          </a>
+          <a href="resources/Resume_21_09_2025.pdf" target="_blank" class="btn btn-secondary">
+            <i class="fas fa-eye"></i> View Resume
+          </a>
+          <a href="resources/Resume_21_09_2025.pdf" download class="btn btn-secondary">
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="glass fade-in">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-container">
+        <div class="slide-in-right">
+          <p class="about-text">
+            Results-driven Software Engineer with <strong>3 years of experience</strong> in backend development, 
+            microservices architecture, and cloud deployment. I specialize in <strong>Java (11/17)</strong>, 
+            <strong>Quarkus</strong>, and <strong>Spring Boot</strong>, with proven success in modernizing 
+            legacy applications and developing scalable, high-performance distributed systems.
+          </p>
+          <p class="about-text">
+            My expertise extends to <strong>AWS services</strong> (Lambda, S3, EC2, SQS, Cassandra), 
+            <strong>Docker containerization</strong>, and <strong>Azure CI/CD pipelines</strong>. 
+            I'm passionate about delivering secure, reliable, and maintainable solutions in agile environments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="glass-dark fade-in">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fab fa-java"></i></div>
+          <div class="skill-name">Java</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+          <div class="skill-name">Spring Boot</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fas fa-cube"></i></div>
+          <div class="skill-name">Quarkus</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fab fa-react"></i></div>
+          <div class="skill-name">React</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fab fa-angular"></i></div>
+          <div class="skill-name">Angular</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <div class="skill-name">PostgreSQL</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fab fa-aws"></i></div>
+          <div class="skill-name">AWS</div>
+        </div>
+        <div class="skill-card glass stagger-animation">
+          <div class="skill-icon"><i class="fab fa-docker"></i></div>
+          <div class="skill-name">Docker</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="glass fade-in">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card glass-dark">
+          <h3>Credence</h3>
+          <p>A comprehensive financial management tool built with modern technologies. Features include expense tracking, budget planning, and financial analytics with a clean, user-friendly interface.</p>
+          <p><strong>Tech Stack:</strong> React, TypeScript, Spring Boot, PostgreSQL</p>
+          <div class="project-links">
+            <a href="https://github.com/ShivasaiPothuganti/credence" target="_blank">
+              <i class="fab fa-github"></i> View Code
+            </a>
+          </div>
+        </div>
+        <div class="project-card glass-dark">
+          <h3>E-Commerce Platform</h3>
+          <p>A full-featured online shopping platform with user authentication, product catalog, shopping cart, and order management system built using enterprise Java technologies.</p>
+          <p><strong>Tech Stack:</strong> JSP, Servlets, MVC Architecture, MySQL</p>
+          <div class="project-links">
+            <a href="https://github.com/ManikantaSai55555/OnlineStore" target="_blank">
+              <i class="fab fa-github"></i> View Code
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="glass-dark fade-in">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <h3>Associate Software Engineer</h3>
+            <div class="company">Xebia</div>
+            <div class="date">July 2023 - Present</div>
+            <p>Led modernization of legacy Java applications, successfully migrating to microservices architecture using Quarkus. Implemented SQS-based asynchronous synchronization and developed robust backend services for mobile applications. Gained extensive hands-on experience with AWS services, Python automation, and cloud deployment strategies.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <h3>Engineer Trainee</h3>
+            <div class="company">Xebia</div>
+            <div class="date">August 2022 - June 2023</div>
+            <p>Implemented Keycloak for secure authentication systems, developed RESTful APIs using Spring Boot with PostgreSQL integration. Successfully containerized applications using Docker and deployed through Azure CI/CD pipelines. Explored and implemented Spring Cloud microservices patterns.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="glass-dark fade-in">
+      <h2 class="section-title">Achievements</h2>
+      <div class="projects-grid">
+        <div class="project-card glass">
+          <h3><i class="fas fa-trophy"></i> Xebia Techathon Finalist</h3>
+          <p>Designed and developed an innovative internal AI bot for employee grievance management, showcasing problem-solving skills and technical innovation.</p>
+        </div>
+        <div class="project-card glass">
+          <h3><i class="fas fa-medal"></i> 1st Place - LogIQ Competition</h3>
+          <p>Secured first position in the coding competition at CMR Institute of Technology, demonstrating strong algorithmic and programming skills.</p>
+        </div>
+        <!-- <div class="project-card glass">
+          <h3><i class="fas fa-graduation-cap"></i> Academic Excellence</h3>
+          <p><strong>B.Tech CSE</strong> - CMR Institute Of Technology (2019-2023) with <strong>8.6 GPA</strong><br>
+          <strong>Intermediate MPC</strong> - 92.4% at Narayana Junior College<br>
+          <strong>SSC</strong> - 9.3 GPA at Bhashyam High School</p>
+        </div> -->
+      </div>
+    </section>
+
+    <section id="contact" class="glass fade-in">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-grid">
+        <a href="mailto:manikaspa.18@gmail.com" class="contact-item glass-dark">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>Email</div>
+        </a>
+        <a href="https://github.com/ManikantaSai55555" target="_blank" class="contact-item glass-dark">
+          <div class="contact-icon"><i class="fab fa-github"></i></div>
+          <div>GitHub</div>
+        </a>
+        <a href="https://linkedin.com/in/kaspa-manikanta-3713721b0/" target="_blank" class="contact-item glass-dark">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div>LinkedIn</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Kaspa Manikanta Sai | Crafted with passion</p>
+  </footer>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 10 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Enhanced scroll animations and effects
+    function initScrollAnimations() {
+      // Scroll progress bar
+      const scrollProgress = document.getElementById('scrollProgress');
+      
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.offsetHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+      });
+
+      // Enhanced intersection observer with staggered animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Add staggered delay for multiple elements
+            if (entry.target.classList.contains('stagger-animation')) {
+              const delay = index * 100;
+              setTimeout(() => {
+                entry.target.classList.add('visible');
+              }, delay);
+            } else {
+              entry.target.classList.add('visible');
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      const animatedElements = document.querySelectorAll(
+        '.fade-in, .slide-in-left, .slide-in-right, .scale-in, .stagger-animation, .timeline-item, .project-card, .text-reveal'
+      );
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Staggered animation for skill cards
+      const skillCards = document.querySelectorAll('.skill-card.stagger-animation');
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const cards = Array.from(skillCards);
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('visible');
+              }, index * 150);
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+
+      if (skillCards.length > 0) {
+        skillObserver.observe(skillCards[0]);
+      }
+
+      // Parallax effect for particles
+      const particles = document.querySelectorAll('.particle');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        particles.forEach((particle, index) => {
+          const rate = scrolled * -0.5 * (index % 3 + 1);
+          particle.style.transform = `translateY(${rate}px)`;
+        });
+      });
+    }
+
+    // Text reveal animation
+    function initTextReveal() {
+      const textElements = document.querySelectorAll('.text-reveal');
+      textElements.forEach(element => {
+        const text = element.textContent;
+        element.innerHTML = `<span>${text}</span>`;
+      });
+    }
+
+    // Enhanced typing effect with cursor
+    const initEnhancedTyping = () => {
+      const title = document.querySelector('.hero h1 span');
+      if (!title) return;
+      
+      const titleText = title.textContent;
+      title.textContent = '';
+      title.style.borderRight = '3px solid #a78bfa';
+      title.style.animation = 'blink 1s infinite';
+      
+      // Add blinking cursor animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes blink {
+          0%, 50% { border-color: #a78bfa; }
+          51%, 100% { border-color: transparent; }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      let i = 0;
+      const typeWriter = () => {
+        if (i < titleText.length) {
+          title.textContent += titleText.charAt(i);
+          i++;
+          setTimeout(typeWriter, 120);
+        } else {
+          // Remove cursor after typing is complete
+          setTimeout(() => {
+            title.style.borderRight = 'none';
+          }, 1000);
+        }
+      };
+      
+      setTimeout(typeWriter, 1500);
+    };
+
+    // Smooth parallax scrolling
+    function initParallaxEffects() {
+      let ticking = false;
+      
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax-slow');
+        
+        parallaxElements.forEach((element, index) => {
+          const rate = scrolled * -0.3 * (index + 1);
+          element.style.transform = `translate3d(0, ${rate}px, 0)`;
+        });
+        
+        ticking = false;
+      }
+      
+      function requestParallaxUpdate() {
+        if (!ticking) {
+          requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }
+      
+      window.addEventListener('scroll', requestParallaxUpdate);
+    }
+
+    // Initialize all animations
+    document.addEventListener('DOMContentLoaded', () => {
+      initTextReveal();
+      initScrollAnimations();
+      initEnhancedTyping();
+      initParallaxEffects();
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(0, 0, 0, 0.3)';
+        header.style.backdropFilter = 'blur(30px)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.1)';
+        header.style.backdropFilter = 'blur(20px)';
+      }
+    });
+
+    // Initialize particles
+    createParticles();
+
+    // Add typing effect to hero title
+    const title = document.querySelector('.hero h1');
+    const titleText = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+      if (i < titleText.length) {
+        title.textContent += titleText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    };
+    
+    setTimeout(typeWriter, 1000);
+  </script>
+</body>
+</html>
