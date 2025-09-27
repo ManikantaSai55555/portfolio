@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="icons/favicon.png" />
   <title>Kaspa Manikanta Sai - Portfolio</title>
+  <link rel="icon" type="image/png" href="icons/favicon.png" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
@@ -337,9 +337,22 @@
     /* Projects section */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 30px;
       margin-top: 40px;
+      justify-content: center;
+    }
+
+    @media (min-width: 1400px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 1200px) and (min-width: 769px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .project-card {
@@ -372,6 +385,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin: 15px 0;
+      justify-content: center;
     }
 
     .tech-card {
@@ -396,6 +410,8 @@
       display: flex;
       gap: 15px;
       margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .project-links a {
@@ -560,6 +576,8 @@
 
       .projects-grid {
         grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 40px auto 0;
       }
 
       .skills-grid {
@@ -762,6 +780,10 @@
       overflow: hidden;
       transform: translateY(20px);
       opacity: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 400px;
     }
 
     .project-card.visible {
@@ -780,6 +802,39 @@
     .project-card:hover strong {
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #a78bfa;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .project-description {
+      flex: 1;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    /*  align-items: center;*/
+    /*  text-align: center; */
+    }
+
+    .project-card p {
+      opacity: 0.9;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .project-footer {
+      margin-top: auto;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     /* Text reveal animation */
@@ -912,81 +967,100 @@
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
         <div class="project-card glass-dark">
-          <h3>ResuMatcher</h3>
-          <p>ResuMatch is an AI-powered resume analysis application that compares resumes against job descriptions using Google's Gemini API. It highlights matching skills, identifies gaps, and provides personalized suggestions to improve candidates' alignment with job requirements. The project uses FastAPI for the backend and React + Vite for the frontend, fully containerized with Docker.</p>
-          
-          <div class="tech-stack">
-            <span class="tech-card">React</span>
-            <span class="tech-card">Python</span>
-            <span class="tech-card">FastAPI</span>
-            <span class="tech-card">Docker</span>
-            <span class="tech-card">AI</span>
-            <span class="tech-card">Gemini API</span>
+          <h3>ResuMatch</h3>
+          <div class="project-description">
+            <p>ResuMatch is an AI-powered resume analyzer that compares resumes with job descriptions using Google’s Gemini API. It highlights matching skills, identifies gaps, and provides personalized suggestions. Built with FastAPI (backend) and React + Vite (frontend), it’s fully containerized with Docker.</p>
           </div>
           
-          <div class="project-links">
-            <a href="https://resumatchai.vercel.app/" target="_blank" class="live-link">
-              <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-            <a href="https://github.com/ManikantaSai55555/ResuMatch" target="_blank">
-              <i class="fab fa-github"></i> View Code
-            </a>
+          <div class="project-footer">
+            <div class="tech-stack">
+              <span class="tech-card">React</span>
+              <span class="tech-card">Python</span>
+              <span class="tech-card">FastAPI</span>
+              <span class="tech-card">Docker</span>
+              <span class="tech-card">AI</span>
+              <span class="tech-card">Gemini API</span>
+            </div>
+            
+            <div class="project-links">
+              <!-- Replace with your actual live URL -->
+              <a href="https://your-live-resumatcher-url.com" target="_blank" class="live-link">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+              <a href="https://github.com/ManikantaSai55555/ResuMatch" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
           </div>
         </div>
         
         <div class="project-card glass-dark">
           <h3>Grievance Management Chatbot</h3>
-          <p>AI-powered web application that automates employee grievance handling. Built with FastAPI, PostgreSQL, and React, it classifies grievances using GPT models and assigns tickets to the right teams for faster resolution.</p>
-          
-          <div class="tech-stack">
-            <span class="tech-card">React</span>
-            <span class="tech-card">Python</span>
-            <span class="tech-card">FastAPI</span>
-            <span class="tech-card">PostgreSQL</span>
-            <span class="tech-card">GPT API</span>
+          <div class="project-description">
+            <p>AI-powered web application that automates employee grievance handling. Built with FastAPI, PostgreSQL, and React, it classifies grievances using GPT models and assigns tickets to the right teams for faster resolution.</p>
           </div>
           
-          <div class="project-links">
-            <a href="https://github.com/ShivasaiPothuganti/credence" target="_blank">
-              <i class="fab fa-github"></i> View Code
-            </a>
+          <div class="project-footer">
+            <div class="tech-stack">
+              <span class="tech-card">React</span>
+              <span class="tech-card">Python</span>
+              <span class="tech-card">FastAPI</span>
+              <span class="tech-card">PostgreSQL</span>
+              <span class="tech-card">AI</span>
+              <span class="tech-card">GPT API</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="https://github.com/ShivasaiPothuganti/credence" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
           </div>
         </div>
         
         <div class="project-card glass-dark">
           <h3>Credence</h3>
-          <p>A comprehensive financial management tool built with modern technologies. Features include expense tracking, budget planning, and financial analytics with a clean, user-friendly interface.</p>
-          
-          <div class="tech-stack">
-            <span class="tech-card">React</span>
-            <span class="tech-card">TypeScript</span>
-            <span class="tech-card">Spring Boot</span>
-            <span class="tech-card">PostgreSQL</span>
+          <div class="project-description">
+            <p>A comprehensive financial management tool built with modern technologies, offering **expense tracking, budget planning, and financial analytics**. It provides a **clean, user-friendly interface** and actionable insights to help users make smarter financial decisions.
+</p>
           </div>
           
-          <div class="project-links">
-            <a href="https://github.com/ShivasaiPothuganti/credence" target="_blank">
-              <i class="fab fa-github"></i> View Code
-            </a>
+          <div class="project-footer">
+            <div class="tech-stack">
+              <span class="tech-card">React</span>
+              <span class="tech-card">TypeScript</span>
+              <span class="tech-card">Spring Boot</span>
+              <span class="tech-card">PostgreSQL</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="https://github.com/ShivasaiPothuganti/credence" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
           </div>
         </div>
         
         <div class="project-card glass-dark">
           <h3>E-Commerce Platform</h3>
-          <p>A full-featured online shopping platform with user authentication, product catalog, shopping cart, and order management system built using enterprise Java technologies.</p>
-          
-          <div class="tech-stack">
-            <span class="tech-card">JSP</span>
-            <span class="tech-card">Servlets</span>
-            <span class="tech-card">MVC</span>
-            <span class="tech-card">MySQL</span>
-            <span class="tech-card">Java</span>
+          <div class="project-description">
+            <p>A full-featured online shopping platform with user authentication, product catalog, shopping cart, and order management system built using enterprise Java technologies.</p>
           </div>
           
-          <div class="project-links">
-            <a href="https://github.com/ManikantaSai55555/OnlineStore" target="_blank">
-              <i class="fab fa-github"></i> View Code
-            </a>
+          <div class="project-footer">
+            <div class="tech-stack">
+              <span class="tech-card">JSP</span>
+              <span class="tech-card">Servlets</span>
+              <span class="tech-card">MVC</span>
+              <span class="tech-card">MySQL</span>
+              <span class="tech-card">Java</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="https://github.com/ManikantaSai55555/OnlineStore" target="_blank">
+                <i class="fab fa-github"></i> View Code
+              </a>
+            </div>
           </div>
         </div>
       </div>
