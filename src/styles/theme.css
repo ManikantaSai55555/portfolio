@@ -1,0 +1,69 @@
+:root{
+  --p1:#667eea;
+  --p2:#764ba2;
+  --p3:#f093fb;
+  --accent:#06b6d4;
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.18);
+  --glass-dark-bg: rgba(0,0,0,0.18);
+  --glass-dark-border: rgba(255,255,255,0.09);
+}
+
+body{
+  margin:0;
+  background: linear-gradient(135deg,var(--p1) 0%,var(--p2) 50%,var(--p3) 100%);
+  color:#fff;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+/* ...existing code... */
+
+.section-title{
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  text-align:center;
+  margin-bottom:2.5rem;
+  background: linear-gradient(45deg,#fff 0%, rgba(255,255,255,0.95) 35%, var(--accent) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  /* improved readability on colorful backgrounds */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* Typewriter / cursor for hero text */
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .12em solid rgba(255,255,255,0.95); /* cursor */
+  
+  /* use CSS vars so duration/steps/width can be set per-instance */
+  animation:
+    typing var(--typing-duration, 2.6s) steps(var(--typing-steps, 20), end) forwards,
+    blink-caret .75s step-end infinite;
+  transition: opacity .4s ease, transform .4s ease;
+  will-change: width, opacity, transform;
+}
+
+/* When typing is finished, remove cursor but keep the text visible */
+.typing.finished {
+  border-right: none;
+  animation: none;
+  opacity: 1;
+}
+
+/* width uses a CSS variable so it matches the string length passed from JS */
+@keyframes typing {
+  from { width: 0; }
+  to   { width: var(--typing-ch, 17ch); }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+  0%,100% { border-color: rgba(255,255,255,0.95); }
+}
+
+@keyframes vanish {
+  to { opacity: 0; transform: translateY(-6px); }
+}
+
