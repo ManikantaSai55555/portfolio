@@ -11,6 +11,8 @@ import { Projects } from './components/sections/Projects';
 import { Experience } from './components/sections/Experience';
 import { Achievements } from './components/sections/Achievements';
 import { Contact } from './components/sections/Contact';
+import { Chatbot } from './components/chatbot/Chatbot';
+import { ChatbotButton } from './components/chatbot/ChatbotButton';
 import { 
   PERSONAL_INFO, 
   NAV_ITEMS, 
@@ -21,8 +23,12 @@ import {
   ABOUT_TEXT 
 } from './data/portfolioData';
 
+// Import chatbot styles
+import './styles/chatbot.css';
+
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const scrollProgress = useScrollProgress();
   const visibleElements = useIntersectionObserver();
 
@@ -30,6 +36,10 @@ const App = () => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setIsMenuOpen(false);
+  };
+
+  const toggleChatbot = () => {
+    setIsChatbotOpen(!isChatbotOpen);
   };
 
   return (
@@ -80,6 +90,24 @@ const App = () => {
       </main>
       
       <Footer name={PERSONAL_INFO.name} />
+      
+      {/* Chatbot Components */}
+      <Chatbot 
+        isOpen={isChatbotOpen}
+        onClose={() => setIsChatbotOpen(false)}
+        portfolioData={{
+          personalInfo: PERSONAL_INFO,
+          skills: SKILLS,
+          projects: PROJECTS,
+          experiences: EXPERIENCES,
+          achievements: ACHIEVEMENTS,
+          about: ABOUT_TEXT
+        }}
+      />
+      <ChatbotButton 
+        isOpen={isChatbotOpen}
+        onClick={toggleChatbot}
+      />
     </div>
   );
 };

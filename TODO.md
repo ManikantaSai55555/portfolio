@@ -1,41 +1,64 @@
-# Portfolio Text Visibility Fix - TODO.md
+# Chatbot Implementation Plan
 
-## Completed Tasks ✅
+## Task: Create Portfolio Chatbot
 
-### 1. Hero Section Text Size Reduction
-- **File**: `src/components/sections/Hero.jsx`
-- **Change**: Reduced hero title font size from `text-5xl md:text-7xl` to `text-4xl md:text-5xl`
-- **Purpose**: Make hero section text more balanced and appropriately sized
+### Information Gathered
+- React portfolio using Vite and Tailwind CSS
+- Portfolio data available in `src/data/portfolioData.js` including:
+  - Personal info (name, title, contact details)
+  - Skills (Java, Spring Boot, Quarkus, React, etc.)
+  - Projects (ResuMatch, Grievance Chatbot, Credence, E-Commerce)
+  - Experience (Xebia roles)
+  - Achievements (Techathon, CodeVita)
+- Uses Lucide React for icons
+- Current structure supports adding new components
 
-### 2. Navbar Name Visibility Fix (Final)
-- **File**: `src/components/common/Logo.jsx`
-- **Change**: Solid white text with strong custom text shadow
-- **Styling**: `text-white` with `textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5)'`
-- **Purpose**: Maximum visibility with strong contrast and shadow depth
+### Plan
+1. **Create Chatbot Component Structure** ✅ COMPLETED
+   - Create `src/components/chatbot/Chatbot.jsx` - main chatbot component ✅
+   - Create `src/components/chatbot/ChatMessage.jsx` - individual message component ✅
+   - Create `src/components/chatbot/ChatbotButton.jsx` - floating button component ✅
+   - Create `src/styles/chatbot.css` - chatbot specific styles ✅
 
-### 3. Project Titles Visibility Fix (Final)
-- **File**: `src/components/cards/ProjectCard.jsx`
-- **Change**: Solid white text with strong custom text shadow
-- **Styling**: `text-white` with `textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5)'`
-- **Purpose**: Clear visibility against any background with professional shadow effect
+2. **Implement Chat Logic** ✅ COMPLETED (UI Ready for LLM Integration)
+   - Add chatbot logic to handle user questions ✅
+   - Create question patterns and responses based on portfolio data ✅
+   - Implement keyword matching and intelligent responses (placeholder for LLM) ✅
 
-### 4. Achievement Titles Visibility Fix (Final)
-- **File**: `src/components/cards/AchievementCard.jsx`
-- **Change**: Solid white text with strong custom text shadow
-- **Styling**: `text-white` with `textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5)'`
-- **Purpose**: Excellent readability with enhanced shadow depth
+3. **Integrate into App** ✅ COMPLETED
+   - Add chatbot component to `App.jsx` ✅
+   - Ensure it appears as floating button in bottom-right corner ✅
+   - Style with Tailwind CSS and existing theme ✅
 
-### 5. Development Server Started
-- **Command**: `npm run dev`
-- **URL**: `http://localhost:5177/`
-- **Status**: Successfully running with hot reload
+4. **Features Included** ✅ COMPLETED
+   - Floating chat button with animation ✅
+   - Expandable chat interface ✅
+   - Welcome message ✅
+   - Responses about: skills, projects, experience, contact info, achievements ✅
+   - Scrollable chat history ✅
+   - Auto-scroll to latest message ✅
+   - Smooth animations and transitions ✅
+   - Typing indicator ✅
 
-## Final Solution
-After testing various gradient approaches, the optimal solution uses:
-- **Pure White Text**: Maximum contrast against colorful backgrounds
-- **Strong Text Shadows**: 2px offset with 4px blur in black (0.8 opacity)
-- **Glow Effect**: Additional shadow for depth and professional appearance
-- **Consistent Styling**: Same approach across all components for uniformity
+### Dependent Files to be Edited
+- `src/components/chatbot/Chatbot.jsx` (new) ✅
+- `src/components/chatbot/ChatMessage.jsx` (new) ✅
+- `src/components/chatbot/ChatbotButton.jsx` (new) ✅
+- `src/styles/chatbot.css` (new) ✅
+- `src/App.jsx` (add chatbot import and component) ✅
+- `src/components/chatbot/index.js` (new) ✅
 
-The portfolio now has excellent text visibility while maintaining a professional appearance with strong shadow effects that make text pop against any background.
+### Followup Steps
+1. Test the chatbot functionality ✅ (Development server running on localhost:5174)
+2. Verify responsive design ✅
+3. Test chat interactions and responses ✅
+4. Ensure it works with existing portfolio theme ✅
+5. **LLM Integration**: User will integrate their own LLM logic in the placeholder section
 
+### Summary
+✅ **COMPLETED**: Complete chatbot UI with all components created and integrated
+✅ **READY FOR LLM INTEGRATION**: The chatbot UI is fully functional with placeholder responses
+✅ **STYLED & ANIMATED**: Smooth animations, floating button, and responsive design
+✅ **PORTFOLIO INTEGRATED**: All portfolio data passed to chatbot component for future LLM use
+
+The chatbot is now ready for the user to integrate their own LLM logic by replacing the placeholder response section in `src/components/chatbot/Chatbot.jsx`.
