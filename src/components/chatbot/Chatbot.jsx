@@ -5,7 +5,7 @@ import { ChatMessage, TypingIndicator } from './ChatMessage';
 export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
   const [messages, setMessages] = useState([
     {
-      text: "Hi! I'm your portfolio assistant. I can help you learn more about Manikanta's background, skills, projects, and experience. What would you like to know?",
+      text: "Hi! I'm Manikanta. How can I assist you with my portfolio?",
       isUser: false
     }
   ]);
@@ -47,29 +47,36 @@ export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
     setInputValue('');
     setIsTyping(true);
 
-    // Dummy API call for demonstration
+    // API call to chatbot backend
     try {
-      const response = await fetch('https://your-python-chatbot-api.com/chat', {
+      const apiUrl = import.meta.env.VITE_CHATBOT_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          message: inputValue,
-          portfolioData: portfolioData 
+          question: inputValue
         })
       });
       
-      // For now, we'll show "To be integrated soon" message
-      // In the future, this will handle your actual Python API response
-      const botResponse = { 
-        text: "To be integrated soon! Your Python chatbot service will be connected here.", 
-        isUser: false 
-      };
-      setMessages(prev => [...prev, botResponse]);
+      if (response.ok) {
+        const data = await response.json();
+        const botResponse = { 
+          text: data.answer || "I couldn't find a relevant answer. Could you please rephrase your question?", 
+          isUser: false 
+        };
+        setMessages(prev => [...prev, botResponse]);
+      } else {
+        const botResponse = { 
+          text: "I'm having trouble connecting to my knowledge base right now. Please try again later!", 
+          isUser: false 
+        };
+        setMessages(prev => [...prev, botResponse]);
+      }
       
     } catch (error) {
-      // Expected to fail since the dummy URL doesn't exist yet
+      console.error('Chatbot API error:', error);
       const botResponse = { 
-        text: "To be integrated soon! Your Python chatbot service will be connected here.", 
+        text: "I'm having trouble connecting to my knowledge base right now. Please try again later!", 
         isUser: false 
       };
       setMessages(prev => [...prev, botResponse]);
@@ -88,21 +95,24 @@ export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-20 right-6 z-40 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col overflow-hidden chatbot-enter chatbot-enter-active" ref={chatbotRef}>
-      {/* Header with close button in top-left */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 flex items-center justify-between relative">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-            <span className="text-sm font-bold">AI</span>
+    <div className="fixed bottom-6 right-6 z-40 w-80 h-96 rounded-lg shadow-2xl flex flex-col overflow-hidden chatbot-enter chatbot-enter-active max-sm:bottom-4 max-sm:right-4 max-sm:w-72 max-sm:h-80 chatbot-window" ref={chatbotRef}>
+      {/* Header with close button */}
+      <div className="chatbot-header text-white p-4 flex items-center justify-between relative overflow-hidden">
+        {/* Glass effect overlay */}
+        <div className="absolute inset-0 bg-white bg-opacity-10 backdrop-blur-sm"></div>
+        
+        <div className="flex items-center gap-3 flex-1 relative z-10">
+          <div className="w-8 h-8 bg-white bg-opacity-30 rounded-full flex items-center justify-center flex-shrink-0 border border-white border-opacity-20">
+            <span className="text-sm font-bold text-white drop-shadow-sm">AI</span>
           </div>
-          <div>
-            <h3 className="font-semibold text-sm">Portfolio Assistant</h3>
-            <p className="text-xs opacity-90">Ask me anything about Manikanta</p>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-semibold text-sm truncate text-white drop-shadow-lg">Portfolio Assistant</h3>
+            <p className="text-xs opacity-90 truncate text-white drop-shadow-md">Ask me anything about Manikanta</p>
           </div>
         </div>
         <button 
           onClick={onClose}
-          className="absolute top-2 left-2 text-white hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition-colors"
+          className="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition-colors flex-shrink-0 ml-2"
         >
           <X className="w-4 h-4" />
         </button>
@@ -127,12 +137,12 @@ export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Type your message..."
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-900 placeholder-gray-600 bg-white"
+            className="flex-1 px-3 py-2 rounded-lg focus:outline-none text-sm text-gray-900 placeholder-gray-600 chatbot-input"
           />
           <button
             onClick={handleSendMessage}
             disabled={!inputValue.trim()}
-            className="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-2 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed chatbot-send-button"
           >
             <Send className="w-4 h-4" />
           </button>

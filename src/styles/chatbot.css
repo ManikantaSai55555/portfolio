@@ -1,4 +1,4 @@
-/* Chatbot specific styles */
+/* Chatbot specific styles with portfolio theme integration */
 .chatbot-enter {
   opacity: 0;
   transform: scale(0.8) translateY(20px);
@@ -9,6 +9,48 @@
   transform: scale(1) translateY(0);
   transition: all 0.3s ease-out;
 }
+
+/* Portfolio-themed glass morphism chatbot container */
+.chatbot-window {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+}
+
+/* Header styling with portfolio gradients */
+.chatbot-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.chatbot-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.chatbot-header > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Removed .chatbot-window * rule that was forcing text to inherit colors */
+
+.chatbot-window h3,
+.chatbot-window h3 * {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Removed conflicting .chatbot-window p rule that was overriding message text colors */
 
 .chatbot-exit {
   opacity: 1;
@@ -75,4 +117,114 @@
 
 .chatbot-messages::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .chatbot-enter {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  
+  .chatbot-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: all 0.3s ease-out;
+  }
+  
+  /* Ensure chatbot doesn't overflow on very small screens */
+  .chatbot-window {
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 8rem);
+  }
+}
+
+/* Prevent text selection on UI elements */
+.chatbot-header {
+  user-select: none;
+}
+
+/* Improve focus states for accessibility */
+.chatbot-input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Animation improvements for smoother transitions */
+.chatbot-enter {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px) translateX(10px);
+}
+
+.chatbot-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0) translateX(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CRITICAL: Force text visibility in chatbot */
+.chatbot-header * {
+  color: white !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Removed conflicting message text color rules */
+
+/* Removed .chatbot-messages .text-white rule to prevent text color conflicts */
+
+/* Enhanced input styling with portfolio theme */
+.chatbot-input {
+  color: #333 !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.chatbot-input:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Fix placeholder text */
+.chatbot-input::placeholder {
+  color: #666 !important;
+  opacity: 1 !important;
+}
+
+/* Send button styling */
+.chatbot-send-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.chatbot-send-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #764ba2 0%, #f093fb 50%, #667eea 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Messages area styling with improved contrast */
+.chatbot-messages {
+  background: rgba(248, 250, 252, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced message styling for better visibility */
+/* Removed conflicting user message styles to allow inline styles */
+
+/* Removed conflicting bot message styles to allow inline styles */
+
+/* Enhanced gradient animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.chatbot-header-animated {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #06b6d4);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
 }
