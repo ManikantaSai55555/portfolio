@@ -95,7 +95,7 @@ export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 w-80 h-96 rounded-lg shadow-2xl flex flex-col overflow-hidden chatbot-enter chatbot-enter-active max-sm:bottom-4 max-sm:right-4 max-sm:w-72 max-sm:h-80 chatbot-window" ref={chatbotRef}>
+    <div className="fixed bottom-6 right-6 z-40 w-96 h-[500px] rounded-lg shadow-2xl flex flex-col overflow-hidden chatbot-enter chatbot-enter-active max-sm:bottom-4 max-sm:right-4 max-sm:w-72 max-sm:h-[450px] chatbot-window" ref={chatbotRef}>
       {/* Header with close button */}
       <div className="chatbot-header text-white p-4 flex items-center justify-between relative overflow-hidden">
         {/* Glass effect overlay */}
