@@ -42,12 +42,21 @@
   z-index: 2;
 }
 
-/* Removed .chatbot-window * rule that was forcing text to inherit colors */
+
 
 .chatbot-window h3,
 .chatbot-window h3 * {
+  color: black !important;
+  /* text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important; */
+}
+
+/* Portfolio Assistant header - white text */
+.chatbot-header h3 {
   color: white !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+.chatbot-header p {
+  color: white !important;
 }
 
 /* Removed conflicting .chatbot-window p rule that was overriding message text colors */
@@ -227,4 +236,122 @@
   background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #06b6d4);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
+}
+
+/* Markdown content styling for chatbot */
+.chatbot-markdown-content h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000000;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 4px;
+}
+
+.chatbot-markdown-content h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 8px;
+  color: #111827;
+}
+
+.chatbot-markdown-content h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  color: #000000;
+}
+
+.chatbot-markdown-content h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 8px;
+  color: #1f2937;
+}
+
+.chatbot-markdown-content p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.chatbot-markdown-content ul {
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.chatbot-markdown-content ol {
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.chatbot-markdown-content li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.chatbot-markdown-content strong {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.chatbot-markdown-content em {
+  font-style: italic;
+}
+
+.chatbot-markdown-content a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.chatbot-markdown-content code {
+  background-color: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: monospace;
+}
+
+.chatbot-markdown-content pre {
+  background-color: #f3f4f6;
+  padding: 10px;
+  border-radius: 8px;
+  overflow: auto;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.chatbot-markdown-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
+}
+
+.chatbot-markdown-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 12px;
+  margin-bottom: 8px;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Ensure markdown content wraps properly on small screens */
+@media (max-width: 640px) {
+  .chatbot-markdown-content {
+    font-size: 13px !important;
+  }
+  
+  .chatbot-markdown-content h1 {
+    font-size: 16px !important;
+  }
+  
+  .chatbot-markdown-content h2 {
+    font-size: 15px !important;
+  }
+  
+  .chatbot-markdown-content h3 {
+    font-size: 14px !important;
+  }
 }

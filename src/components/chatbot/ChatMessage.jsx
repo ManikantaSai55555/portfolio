@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 export const ChatMessage = ({ message, isUser }) => {
   return (
@@ -26,25 +27,126 @@ export const ChatMessage = ({ message, isUser }) => {
       )}
       
       <div style={{
-        backgroundColor: isUser ? '#3b82f6' : '#f3f4f6',
+        backgroundColor: isUser ? '#3b82f6' : '#ffffff',
         color: isUser ? '#ffffff' : '#374151',
         border: isUser ? 'none' : '1px solid #e5e7eb',
-        padding: '8px 12px',
+        padding: '12px 14px',
         borderRadius: '12px',
         maxWidth: '200px',
         fontSize: '14px',
         fontWeight: 'normal',
-        lineHeight: '1.4'
+        lineHeight: '1.5'
       }}>
-        <span style={{ 
-          color: 'inherit',
-          margin: '0', 
-          fontSize: '14px', 
-          fontWeight: 'normal',
-          display: 'block'
-        }}>
-          {message}
-        </span>
+        {isUser ? (
+          <span style={{ 
+            color: 'inherit',
+            margin: '0', 
+            fontSize: '14px', 
+            fontWeight: 'normal',
+            display: 'block'
+          }}>
+            {message}
+          </span>
+        ) : (
+          <div className="chatbot-markdown-content" style={{
+            color: '#374151',
+            fontSize: '14px',
+            lineHeight: '1.5'
+          }}>
+            <ReactMarkdown
+              components={{
+                h1: ({node, ...props}) => <h1 style={{
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  marginBottom: '8px',
+                  color: '#000000',
+                  borderBottom: '2px solid #3b82f6',
+                  paddingBottom: '4px'
+                }} {...props} />,
+                h2: ({node, ...props}) => <h2 style={{
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  marginBottom: '6px',
+                  marginTop: '8px',
+                  color: '#111827'
+                }} {...props} />,
+                h3: ({node, ...props}) => <h3 style={{
+                  fontSize: '15px',
+                  fontWeight: 'bold',
+                  marginBottom: '6px',
+                  marginTop: '10px',
+                  color: '#000000'
+                }} {...props} />,
+                h4: ({node, ...props}) => <h4 style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  marginTop: '8px',
+                  color: '#1f2937'
+                }} {...props} />,
+                strong: ({node, ...props}) => <strong style={{
+                  fontWeight: '700',
+                  color: '#1f2937'
+                }} {...props} />,
+                em: ({node, ...props}) => <em style={{
+                  fontStyle: 'italic'
+                }} {...props} />,
+                p: ({node, ...props}) => <p style={{
+                  marginBottom: '8px',
+                  lineHeight: '1.5'
+                }} {...props} />,
+                ul: ({node, ...props}) => <ul style={{
+                  marginBottom: '8px',
+                  paddingLeft: '20px',
+                  listStyleType: 'disc'
+                }} {...props} />,
+                ol: ({node, ...props}) => <ol style={{
+                  marginBottom: '8px',
+                  paddingLeft: '20px',
+                  listStyleType: 'decimal'
+                }} {...props} />,
+                li: ({node, ...props}) => <li style={{
+                  marginBottom: '4px',
+                  lineHeight: '1.4'
+                }} {...props} />,
+                a: ({node, ...props}) => <a style={{
+                  color: '#3b82f6',
+                  textDecoration: 'underline',
+                  cursor: 'pointer'
+                }} {...props} />,
+                code: ({node, ...props}) => <code style={{
+                  backgroundColor: '#f3f4f6',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  fontSize: '13px',
+                  fontFamily: 'monospace'
+                }} {...props} />,
+                pre: ({node, ...props}) => <pre style={{
+                  backgroundColor: '#f3f4f6',
+                  padding: '10px',
+                  borderRadius: '8px',
+                  overflow: 'auto',
+                  marginBottom: '8px',
+                  fontSize: '13px'
+                }} {...props} />,
+                hr: ({node, ...props}) => <hr style={{
+                  border: 'none',
+                  borderTop: '1px solid #e5e7eb',
+                  margin: '12px 0'
+                }} {...props} />,
+                blockquote: ({node, ...props}) => <blockquote style={{
+                  borderLeft: '4px solid #3b82f6',
+                  paddingLeft: '12px',
+                  marginBottom: '8px',
+                  fontStyle: 'italic',
+                  color: '#6b7280'
+                }} {...props} />
+              }}
+            >
+              {message}
+            </ReactMarkdown>
+          </div>
+        )}
       </div>
       
       {isUser && (
@@ -127,3 +229,4 @@ export const TypingIndicator = () => {
     </div>
   );
 };
+

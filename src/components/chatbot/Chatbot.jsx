@@ -106,7 +106,7 @@ export const Chatbot = ({ isOpen, onClose, portfolioData }) => {
             <span className="text-sm font-bold text-white drop-shadow-sm">AI</span>
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="font-semibold text-sm truncate text-white drop-shadow-lg">Portfolio Assistant</h3>
+            <h3 className="font-semibold text-sm truncate text-white">Portfolio Assistant</h3>
             <p className="text-xs opacity-90 truncate text-white drop-shadow-md">Ask me anything about Manikanta</p>
           </div>
         </div>
