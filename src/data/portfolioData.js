@@ -56,6 +56,13 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    title: 'AI Podcast Summarizer',
+    description: 'Built an AI-powered web application that transcribes podcast audio and generates structured summaries using OpenAI Whisper and Google Gemini 2.0 Flash with Streamlit. Integrated YouTube API to extract and process audio content automatically.',
+    tech: ['Streamlit', 'Python', 'FastAPI', 'AI', 'Gemini API', 'Whisper', 'LangChain', 'Audio Processing'],
+    liveLink: 'https://huggingface.co/spaces/Manikanta1572/AIPodcastSummarizer',
+    githubLink: 'https://github.com/ManikantaSai55555/AIPodcastSummarizer'
+  },
+  {
     title: 'ResuMatch',
     description: 'ResuMatch is an AI-powered resume analyzer that compares resumes with job descriptions using Google\'s Gemini API. It highlights matching skills, identifies gaps, and provides personalized suggestions. Built with FastAPI (backend) and React + Vite (frontend), it\'s fully containerized with Docker.',
     tech: ['React', 'Python', 'FastAPI', 'Docker', 'AI', 'Gemini API'],
@@ -112,5 +119,6 @@ export const ACHIEVEMENTS = [
 
 export const ABOUT_TEXT = [
   'Software Engineer with <strong>3 years of experience</strong> in backend development, microservices architecture, and cloud deployment. I specialize in <strong>Java</strong>, <strong>Quarkus</strong>, and <strong>Spring Boot</strong>, with proven success in modernizing legacy applications and developing scalable, high-performance distributed systems.',
-  'My expertise extends to <strong>AWS services</strong> (Lambda, S3, EC2, SQS, Cassandra), <strong>Docker containerization</strong>, and <strong>Azure CI/CD pipelines</strong>. I\'m passionate about delivering secure, reliable, and maintainable solutions in agile environments.'
+  'My expertise extends to <strong>AWS services</strong> (Lambda, S3, EC2, SQS, Cassandra), <strong>Docker containerization</strong>, and <strong>Azure CI/CD pipelines</strong>. I\'m passionate about delivering secure, reliable, and maintainable solutions in agile environments.',
+  'Currently, I am expanding my expertise in <strong>Artificial Intelligence</strong>, actively learning and working with cutting-edge AI technologies including <strong>Google Gemini API</strong>, <strong>OpenAI Whisper</strong> for audio transcription, <strong>LangChain</strong> for building AI applications, and <strong>OpenAI GPT models</strong>. I am applying these skills to build innovative solutions that combine traditional software engineering with intelligent automation.'
 ];
